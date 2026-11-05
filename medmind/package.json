@@ -1,0 +1,29 @@
+{
+  "name": "medmind",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"node --watch server/index.js\" \"npm run dev:patient\" \"npm run dev:doctor\"",
+    "dev:patient": "vite --mode patient --host 0.0.0.0",
+    "dev:doctor": "vite --mode doctor --host 0.0.0.0",
+    "build": "npm run build:patient && npm run build:doctor",
+    "build:patient": "vite build --mode patient",
+    "build:doctor": "vite build --mode doctor",
+    "start": "node server/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.1.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^6.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1"
+  }
+}

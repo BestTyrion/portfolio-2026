@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-31",
+  "environment": "Managed cloud Chrome / local preview",
+  "checks": [
+    {
+      "check": "Six main navigation entries and revised labels",
+      "result": "PASS"
+    },
+    {
+      "check": "Independent authentic photos in desktop activity cards",
+      "result": "PASS"
+    },
+    {
+      "check": "Private note create and persistent read",
+      "result": "PASS"
+    },
+    {
+      "check": "Selected-source template draft and editable source citations",
+      "result": "PASS"
+    },
+    {
+      "check": "Draft confirm state persists after re-opening",
+      "result": "PASS"
+    },
+    {
+      "check": "Source-linked review card created in interface",
+      "result": "PASS"
+    },
+    {
+      "check": "390px iframe intro and activities responsive layout",
+      "result": "PASS",
+      "body_client_width": 375,
+      "body_scroll_width": 375
+    },
+    {
+      "check": "Activity details contain sharer introduction and organizer venue management",
+      "result": "PASS"
+    },
+    {
+      "check": "Activity sharer links directly to public mentor profile and works",
+      "result": "PASS"
+    }
+  ],
+  "limits": [
+    "390px iframe is not a physical mobile device",
+    "No Windows machine test",
+    "No real LLM connected",
+    "Data and profiles fictional"
+  ]
+}

@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';import path from 'node:path';
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.webp':'image/webp','.woff':'font/woff','.txt':'text/plain'};
+const assets={};async function walk(dir){for(const f of await fs.readdir(dir,{withFileTypes:true})){const p=path.join(dir,f.name);if(f.isDirectory())await walk(p);else assets['/'+path.relative('public',p)]={data:(await fs.readFile(p)).toString('base64'),type:types[path.extname(p)]||'application/octet-stream'};}}
+await walk('public');await fs.rm('dist',{recursive:true,force:true});await fs.mkdir('dist/server',{recursive:true});await fs.mkdir('dist/.openai',{recursive:true});
+const modules=['public/locale-en.mjs','public/locale-seeds.mjs','public/i18n.mjs','public/provider-json.mjs','public/evidence.mjs','public/commerce.mjs','worker/commerce.mjs','worker/index.mjs'];
+const code=[];for(const filename of modules){let value=(await fs.readFile(filename,'utf8')).replace(/^import[^\n]+\n/gm,'');if(filename!=='worker/index.mjs')value=value.replace(/export /g,'');code.push(value);}
+await fs.writeFile('dist/server/index.js','const ASSETS='+JSON.stringify(assets)+';\n'+code.join('\n'));await fs.copyFile('.openai/hosting.json','dist/.openai/hosting.json');console.log('Built Worker API and '+Object.keys(assets).length+' embedded assets.');

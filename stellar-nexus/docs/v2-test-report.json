@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-05T00:48:39.609Z",
+  "environment": "actual V1/V2 handlers + isolated SQLite D1 adapter",
+  "summary": "43 passed",
+  "checks": [
+    {
+      "check": "Public seed, mentors and confirmed graph relations",
+      "result": "PASS"
+    },
+    {
+      "check": "Guest has no private notes",
+      "result": "PASS"
+    },
+    {
+      "check": "Anonymous private writes rejected",
+      "result": "PASS"
+    },
+    {
+      "check": "Private note persisted",
+      "result": "PASS"
+    },
+    {
+      "check": "Other user cannot edit note",
+      "result": "PASS"
+    },
+    {
+      "check": "Admin cannot edit private note",
+      "result": "PASS"
+    },
+    {
+      "check": "AI permission enforced",
+      "result": "PASS"
+    },
+    {
+      "check": "Source-preserving template explicitly identified",
+      "result": "PASS"
+    },
+    {
+      "check": "Other user cannot confirm draft",
+      "result": "PASS"
+    },
+    {
+      "check": "Editable draft confirmation persists",
+      "result": "PASS"
+    },
+    {
+      "check": "Review card retains source",
+      "result": "PASS"
+    },
+    {
+      "check": "Review state persists",
+      "result": "PASS"
+    },
+    {
+      "check": "Other user cannot alter review",
+      "result": "PASS"
+    },
+    {
+      "check": "Share requires explicit consent",
+      "result": "PASS"
+    },
+    {
+      "check": "Private share enters pending queue",
+      "result": "PASS"
+    },
+    {
+      "check": "Public collection excludes pending share",
+      "result": "PASS"
+    },
+    {
+      "check": "Public bookmark persisted with source",
+      "result": "PASS"
+    },
+    {
+      "check": "Withdrawn source content is hidden from bookmarks",
+      "result": "PASS"
+    },
+    {
+      "check": "Private collection persisted",
+      "result": "PASS"
+    },
+    {
+      "check": "Other user cannot add private collection",
+      "result": "PASS"
+    },
+    {
+      "check": "Mentor submission is not immediately public",
+      "result": "PASS"
+    },
+    {
+      "check": "Only admin approves mentor",
+      "result": "PASS"
+    },
+    {
+      "check": "Approved consenting mentor public",
+      "result": "PASS"
+    },
+    {
+      "check": "Withdrawn mentor hidden",
+      "result": "PASS"
+    },
+    {
+      "check": "Nonmember group notes blocked",
+      "result": "PASS"
+    },
+    {
+      "check": "Activity teacher writes member-only notes",
+      "result": "PASS"
+    },
+    {
+      "check": "Co-teaching invitation persists",
+      "result": "PASS"
+    },
+    {
+      "check": "Wrong user cannot accept invitation",
+      "result": "PASS"
+    },
+    {
+      "check": "Acceptance adds actual event teacher",
+      "result": "PASS"
+    },
+    {
+      "check": "Preferences persisted",
+      "result": "PASS"
+    },
+    {
+      "check": "Export contains only own private data",
+      "result": "PASS"
+    },
+    {
+      "check": "Demo password is protected",
+      "result": "PASS"
+    },
+    {
+      "check": "Password requires current credential",
+      "result": "PASS"
+    },
+    {
+      "check": "User changes own password",
+      "result": "PASS"
+    },
+    {
+      "check": "New password authenticates",
+      "result": "PASS"
+    },
+    {
+      "check": "Delete removes dependent review and drafts only",
+      "result": "PASS"
+    },
+    {
+      "check": "V3 supplies 24 public topics and 16 concrete group scenarios",
+      "result": "PASS"
+    },
+    {
+      "check": "V3 knowledge includes task-specific source notes",
+      "result": "PASS"
+    },
+    {
+      "check": "Richer demo fixtures are idempotent",
+      "result": "PASS"
+    },
+    {
+      "check": "Demo demand comes from 30 labelled synthetic members",
+      "result": "PASS"
+    },
+    {
+      "check": "New scenarios include actual co-facilitator relations",
+      "result": "PASS"
+    },
+    {
+      "check": "Synthetic registrations create concrete occupancy",
+      "result": "PASS"
+    },
+    {
+      "check": "No private learning records fabricated for synthetic members",
+      "result": "PASS"
+    }
+  ]
+}

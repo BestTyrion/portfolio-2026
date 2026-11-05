@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-31",
+  "environment": "actual API handler + in-memory SQLite D1 adapter; isolated fictional fixtures",
+  "checks": [
+    {
+      "check": "Adult confirmation required for signup",
+      "result": "PASS"
+    },
+    {
+      "check": "Real signup persists new user and session",
+      "result": "PASS"
+    },
+    {
+      "check": "Signed-in identity survives next request",
+      "result": "PASS"
+    },
+    {
+      "check": "Database seed and anonymous read",
+      "result": "PASS"
+    },
+    {
+      "check": "Anonymous writes rejected",
+      "result": "PASS"
+    },
+    {
+      "check": "Learner cannot use admin endpoint",
+      "result": "PASS"
+    },
+    {
+      "check": "Interests and custom skill persist",
+      "result": "PASS"
+    },
+    {
+      "check": "Custom skill private before review",
+      "result": "PASS"
+    },
+    {
+      "check": "Unreviewed custom skill hidden from guests",
+      "result": "PASS"
+    },
+    {
+      "check": "Review makes skill publicly discoverable",
+      "result": "PASS"
+    },
+    {
+      "check": "Teacher creates course and pending event",
+      "result": "PASS"
+    },
+    {
+      "check": "Non-organizer cannot confirm venue",
+      "result": "PASS"
+    },
+    {
+      "check": "Private residence excluded from public grouping",
+      "result": "PASS"
+    },
+    {
+      "check": "Organizer confirms suitable venue",
+      "result": "PASS"
+    },
+    {
+      "check": "Overlapping time interval conflicts rejected",
+      "result": "PASS"
+    },
+    {
+      "check": "Capacity enforced and overflow waitlisted",
+      "result": "PASS"
+    },
+    {
+      "check": "Duplicate registration rejected",
+      "result": "PASS"
+    },
+    {
+      "check": "Waitlisted participant cannot check in",
+      "result": "PASS"
+    },
+    {
+      "check": "Cancellation promotes waitlist atomically",
+      "result": "PASS"
+    },
+    {
+      "check": "Incorrect event code rejected",
+      "result": "PASS"
+    },
+    {
+      "check": "Confirmed participant can check in",
+      "result": "PASS"
+    },
+    {
+      "check": "Organizer completes event",
+      "result": "PASS"
+    },
+    {
+      "check": "Checked-in participant feedback persists",
+      "result": "PASS"
+    },
+    {
+      "check": "Activity teacher creates source-linked draft",
+      "result": "PASS"
+    },
+    {
+      "check": "No public submission without explicit consent",
+      "result": "PASS"
+    },
+    {
+      "check": "Unreviewed knowledge hidden from public",
+      "result": "PASS"
+    },
+    {
+      "check": "Admin publishes confirmed and authorized card",
+      "result": "PASS"
+    },
+    {
+      "check": "Published card joins public knowledge graph",
+      "result": "PASS"
+    },
+    {
+      "check": "Consent withdrawal removes public visibility",
+      "result": "PASS"
+    },
+    {
+      "check": "Other users cannot edit author card",
+      "result": "PASS"
+    }
+  ],
+  "summary": "30 passed",
+  "event_id": "df89d329-e96b-4c98-8828-ccf14e0f5955",
+  "card_id": "cf910c14-9575-4b8f-859c-9a1d4ebbf37c"
+}

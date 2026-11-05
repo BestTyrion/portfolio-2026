@@ -1,0 +1,14 @@
+import {parseProviderJSON} from '../public/provider-json.mjs';
+import {marketplaceLink,publicProductFacts,identifyMessages,validateIdentification} from '../public/commerce.mjs';
+export async function identifyCommerce(input,{key,model,signal,upstream=fetch}){
+ if(!input||typeof input.url!=='string'||input.url.length>3000||typeof input.text!=='string'||input.text.length>10000)throw Error('请填写商品链接；补充描述最多 10000 字。');
+ const link=marketplaceLink(input.url);let facts=[],pageStatus='unavailable';
+ // One public request to a canonical allowlisted URL. No cookies, auth, redirect following or anti-bot workaround.
+ try{const page=await upstream(link.url,{headers:{Accept:'text/html'},redirect:'manual',signal:AbortSignal.any([signal,AbortSignal.timeout(8000)])});if(page.ok&&page.headers.get('Content-Type')?.includes('text/html')){const reader=page.body.getReader();let size=0,parts=[];while(true){const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>700000){await reader.cancel();break;}parts.push(value);}const bytes=new Uint8Array(parts.reduce((n,b)=>n+b.length,0));let p=0;for(const part of parts){bytes.set(part,p);p+=part.length;}const html=new TextDecoder().decode(bytes);if(!/captcha|verify.{0,20}human|robot check|访问验证|滑动验证|登录后查看/i.test(html)){facts=publicProductFacts(html);pageStatus=facts.length?'public_fields':'no_public_fields';}else pageStatus='access_required';}else pageStatus=[401,403,429].includes(page.status)?'access_required':page.status>=300&&page.status<400?'redirect_not_followed':'unavailable';}catch{pageStatus='unavailable';}
+ if(input.text.trim())facts.push({id:'user_text',key:'description',label:'用户粘贴的商品描述（未由平台核实）',value:input.text.trim(),source:'user_text'});
+ if(!facts.length)return {link,pageStatus,fields:validateIdentification({},[]),facts,aiUsed:false,notice:'已识别平台与商品编号，公开页面未提供可读取资料。请粘贴商品标题、型号与价格原文后再识别。'};
+ const response=await upstream('https://api.poe.com/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json',Accept:'application/json','HTTP-Referer':'https://trace-decision-studio.p-tyrionchow.chatgpt.site','X-Title':'My Best Choice'},body:JSON.stringify({model,messages:identifyMessages(link,facts),max_tokens:1400,stream:false}),signal});
+ if(!response.ok)throw Error(response.status===401?'Poe 密钥无效，请检查连接。':response.status===402?'Poe 余额不足。':response.status===429?'Poe 请求频繁，请稍后再试。':'商品识别暂时不可用，请稍后重试。');
+ const body=await response.json(),choice=body.choices?.[0];if(choice?.finish_reason!=='stop'||!choice.message?.content)throw Error('模型未完整返回商品资料，请重试。');let parsed;try{parsed=parseProviderJSON(choice.message.content);}catch{throw Error('模型未返回有效商品 JSON，请重试。');}
+ return {link,pageStatus,fields:validateIdentification(parsed,facts),facts,aiUsed:true,model,notice:'AI 根据公开字段与补充描述提取；未经平台官方接口核实，保存前请确认型号、版本与币种。'};
+}

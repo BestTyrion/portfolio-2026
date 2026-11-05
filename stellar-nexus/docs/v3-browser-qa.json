@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-31",
+  "environment": "Managed Chrome local preview; 390px iframe for narrow layout",
+  "checks": [
+    {
+      "check": "English switch changes opening, six entries, graph and authored scenario content",
+      "result": "PASS"
+    },
+    {
+      "check": "Locale retained after reload",
+      "result": "PASS"
+    },
+    {
+      "check": "English sound search finds the authored sound postcard activity",
+      "result": "PASS"
+    },
+    {
+      "check": "Online selector displays English while preserving canonical Chinese value",
+      "result": "PASS",
+      "display": "Online",
+      "canonical_value": "線上"
+    },
+    {
+      "check": "Skill positions advance right and wrap to new topics",
+      "result": "PASS",
+      "example_start": "Phone photography",
+      "example_after_wrap": "Everyday English"
+    },
+    {
+      "check": "Pause freezes DOM positions across observations",
+      "result": "PASS"
+    },
+    {
+      "check": "Pointer entry updates skill state and reaches 120 percent scale",
+      "result": "PASS",
+      "scale": 1.2
+    },
+    {
+      "check": "Sound opt-in and opt-out toggle successfully",
+      "result": "PASS",
+      "auditory_review": "Audio is synthesised by Web Audio; no subjective listening evaluation performed."
+    },
+    {
+      "check": "390px iframe has no horizontal overflow",
+      "result": "PASS",
+      "client_width": 375,
+      "scroll_width": 375
+    }
+  ],
+  "limitations": [
+    "Not a physical mobile test",
+    "No subjective audio quality evaluation",
+    "Unknown free-form user content remains in its original language",
+    "Figma timeline is a schematic reference; mouse-reactive physics and audio run in the live site"
+  ]
+}

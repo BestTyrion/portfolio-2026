@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY,name TEXT NOT NULL,role TEXT NOT NULL CHECK(role IN('patient','doctor')),age INTEGER NOT NULL,email TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,reminders INTEGER NOT NULL DEFAULT 1,large_text INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS sessions(token_hash TEXT PRIMARY KEY,user_id INTEGER NOT NULL REFERENCES users(id),expires_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS plans(id INTEGER PRIMARY KEY,patient_id INTEGER NOT NULL REFERENCES users(id),name TEXT NOT NULL,dosage_label TEXT NOT NULL,time TEXT NOT NULL,start_date TEXT NOT NULL,active INTEGER NOT NULL DEFAULT 1,created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY,plan_id INTEGER NOT NULL REFERENCES plans(id),patient_id INTEGER NOT NULL REFERENCES users(id),scheduled_at TEXT NOT NULL,status TEXT NOT NULL CHECK(status IN('TAKEN','NOT_TAKEN','UNKNOWN')),review_status TEXT NOT NULL CHECK(review_status IN('PENDING','NEEDS_REVIEW','RECORDED')),reason TEXT,source TEXT,recorded_at TEXT,UNIQUE(plan_id,scheduled_at));
+CREATE TABLE IF NOT EXISTS revisions(id INTEGER PRIMARY KEY,event_id INTEGER NOT NULL REFERENCES events(id),status TEXT NOT NULL,reason TEXT,source TEXT NOT NULL,recorded_at TEXT NOT NULL,note TEXT);
+CREATE TABLE IF NOT EXISTS shares(id INTEGER PRIMARY KEY,patient_id INTEGER NOT NULL REFERENCES users(id),doctor_id INTEGER NOT NULL REFERENCES users(id),scope TEXT NOT NULL CHECK(scope IN('ALL','SUMMARY')),active INTEGER NOT NULL,granted_at TEXT NOT NULL,revoked_at TEXT,UNIQUE(patient_id,doctor_id));
+CREATE TABLE IF NOT EXISTS consultations(id INTEGER PRIMARY KEY,patient_id INTEGER NOT NULL REFERENCES users(id),doctor_id INTEGER NOT NULL REFERENCES users(id),clinical_note TEXT NOT NULL,patient_summary TEXT NOT NULL DEFAULT '',published_at TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_events_patient_date ON events(patient_id,scheduled_at);
+CREATE INDEX IF NOT EXISTS idx_revisions_event ON revisions(event_id,recorded_at);
+CREATE INDEX IF NOT EXISTS idx_shares_doctor ON shares(doctor_id,active);
+CREATE INDEX IF NOT EXISTS idx_consultations_patient ON consultations(patient_id,published_at);

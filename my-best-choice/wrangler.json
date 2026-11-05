@@ -1,0 +1,6 @@
+{
+  "name": "portfolio-my-best-choice",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-11-05",
+  "workers_dev": true
+}

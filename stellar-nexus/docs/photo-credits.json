@@ -1,0 +1,94 @@
+[
+  {
+    "file": "public/photos/phone.jpg",
+    "photographer": "Luca Nicoletti",
+    "source": "https://unsplash.com/photos/Vjti2QGrWlM",
+    "license": "https://unsplash.com/license",
+    "usage": "Illustrative phone photography, not an actual platform activity."
+  },
+  {
+    "file": "public/photos/collaborate.jpg",
+    "photographer": "Annie Spratt",
+    "source": "https://unsplash.com/photos/QckxruozjRg",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/electronics.jpg",
+    "photographer": "Vishnu Mohanan",
+    "source": "https://unsplash.com/photos/0iRfjG7IGeo",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1649959265391-8a1de884248a?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/pottery.jpg",
+    "photographer": "Alex Jones",
+    "source": "https://unsplash.com/photos/Tq4YjCa2BSc",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1422246358533-95dcd3d48961?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/group.jpg",
+    "photographer": "2H Media",
+    "source": "https://unsplash.com/photos/lPcQhLP-b4I",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1633457897190-8c8c23a12c4c?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/coffee.jpg",
+    "photographer": "Jakub Kapusnak",
+    "source": "https://unsplash.com/photos/Rt2t11IUizs",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1500912644938-2fcd28844358?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/music.jpg",
+    "photographer": "Mason Miller",
+    "source": "https://unsplash.com/photos/Fr8pM5P4apk",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1702438712198-ffa30368925c?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/street.jpg",
+    "photographer": "Max Zhang",
+    "source": "https://unsplash.com/photos/wfvZRMMMbFI",
+    "license": "https://unsplash.com/license",
+    "usage": "Independent authentic photography. Illustrative only; not actual platform event or person.",
+    "cdn": "https://images.unsplash.com/photo-1614837315169-b643f0838e5b?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/venue.jpg",
+    "same_as": "public/photos/group.jpg",
+    "usage": "Example meeting space; not a platform venue photograph."
+  },
+  {
+    "file": "public/photos/garden.jpg",
+    "photographer": "feey",
+    "source": "https://unsplash.com/photos/LtbWYOmkhgs",
+    "license": "https://unsplash.com/license",
+    "usage": "Authentic photography used for illustrative topic context; not a platform activity record.",
+    "cdn": "https://images.unsplash.com/photo-1644996649417-caef9c49f796?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/sewing.jpg",
+    "photographer": "Bozhin Karaivanov",
+    "source": "https://unsplash.com/photos/SPBjiGpx5Nw",
+    "license": "https://unsplash.com/license",
+    "usage": "Authentic photography used for illustrative topic context; not a platform activity record.",
+    "cdn": "https://images.unsplash.com/photo-1701188516359-30e8f1e2dac3?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "file": "public/photos/tea.jpg",
+    "photographer": "Sergey N",
+    "source": "https://unsplash.com/photos/oBvOyQigJ9I",
+    "license": "https://unsplash.com/license",
+    "usage": "Authentic photography used for illustrative topic context; not a platform activity record.",
+    "cdn": "https://images.unsplash.com/photo-1688275372490-f631e92bf98d?auto=format&fit=crop&w=1200&q=85"
+  }
+]

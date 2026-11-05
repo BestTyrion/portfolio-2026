@@ -1,0 +1,34 @@
+export const KEY='trace-studio-v1';
+export const products={
+ 'earbud-aster':{id:'earbud-aster',name:'Aster One 通勤耳机',category:'通勤音频',model:'Aster One',configuration:'黑色 · 标准套装',art:'earbuds',purpose:'安静通勤，改善连接',existing:'旧耳机偶尔断连，但还能使用',emotion:'我期待安静的通勤，也喜欢它的样子',social:'博主推荐让我注意到它，但不是全部理由',budget:600,price:499,tag:'正在考虑'},
+ 'stand-mini':{id:'stand-mini',name:'Aster Mini 桌面支架',category:'桌面好物',model:'Aster Mini',configuration:'银色 · 标准款',art:'stand',purpose:'暂时没有新的使用场景',existing:'已有两个可用支架',emotion:'小巧的金属外观让我心动',social:'没有明显的社交用途',budget:200,price:99,tag:'便宜，但用得上吗'},
+ 'gpu-5090':{id:'gpu-5090',name:'高显存创作显卡',category:'创作设备',model:'RTX 5090 候选',configuration:'具体品牌、地区及保修待核实',art:'gpu',purpose:'升级适合本地 AI 创作的显卡',existing:'当前任务遇到显存限制，具体要求仍需核实',emotion:'希望减少创作等待，把时间放在作品上',social:'目前没有明确的社交用途',budget:null,price:null,tag:'未来需求候选'}
+};
+export const history=[599,599,579,579,549,569,549,549,529,549,529,529,519,529,499].map((price,i)=>({price,date:new Date(Date.UTC(2026,6,17)+Math.round(i*89/14)*86400000).toISOString().slice(0,10)}));
+export const offers=[{id:'a',merchant:'示例 A',price:499,shipping:0,warranty:'本地一年保修',condition:'标准套装',sourceUrl:null},{id:'b',merchant:'示例 B',price:479,shipping:40,warranty:'商家保修，条件不同',condition:'需核对保修',sourceUrl:null},{id:'c',merchant:'示例 C',price:529,shipping:0,warranty:'本地一年保修',condition:'标准套装',sourceUrl:null}];
+export const reviews=[{id:'wear',topic:'佩戴与降噪',kind:'positive',label:'正向主题',scope:'商品质量',title:'通勤的安静感，是她真正期待的体验。',body:'这是一条示例评价主题，用于演示与用途相关的正向证据。实际佩戴感仍需试戴，不能据此保证每个人都舒适。',version:'黑色标准套装',sourceUrl:null},{id:'calls',topic:'连接与通话',kind:'negative',label:'反向主题',scope:'商品质量',title:'通话表现仍有分歧，不能只看总体好评。',body:'示例反向证据：部分评价对连接稳定性提出疑虑。当前没有可核实的真实样本数量和原文，应继续核对适用版本。',version:'版本需再核对',sourceUrl:null},{id:'service',topic:'保修与售后',kind:'mixed',label:'条件待核实',scope:'商家服务',title:'价格差异，也可能来自不同的保修安排。',body:'这里记录商家履约与保修条件，不能把售后问题直接当作耳机的性能问题。请选择商家后核对其完整规则。',version:'按商家分别查看',sourceUrl:null}];
+export function freshState(user='chen'){
+ return {schemaVersion:1,user,setup:false,profile:{name:user==='chen'?'陈晴':'创作者 B',priorities:['实际用途','价格与质量'],note:''},edits:{},decisions:[],watch:[],goals:user==='creator-b'?[{id:'goal-gpu',title:'升级适合本地 AI 创作的显卡',purpose:'本地创作任务受显存限制',requirements:'核对实际显存需求、整机、电源与机箱兼容',months:12,priority:'重要但不急',status:'planning',target:24000,reserved:6000,monthly:1500}]:[],dismissedProposal:false,changes:[],notifications:{direction:true,price:true,after:true},selectedOffer:'a',priceDropped:false};
+}
+export function product(state,id){const p=products[id]||state.customProducts?.[id];return p?{...p,...(state.edits[id]||{})}:null;}
+export function total(offer){return Number(offer.price)+Number(offer.shipping||0);}
+export function priceFor(state,p){if(p.variantChanged)return null;if(p.id==='earbud-aster'){if(state.priceDropped&&state.selectedOffer==='a')return 429;const o=offers.find(x=>x.id===state.selectedOffer)||offers[0];return total(o);}return p.price==null?null:Number(p.price);}
+export function budgetFit(budget,price){if(budget==null||budget===''||price==null)return {known:false,remainder:null,over:null};const remainder=Math.round((Number(budget)-Number(price))*100)/100;return {known:true,remainder,over:Math.max(0,-remainder)};}
+export function funding(goal){const gap=Math.max(0,Number(goal.target||0)-Number(goal.reserved||0));return {gap,months:Number(goal.monthly)>0?Math.ceil(gap/Number(goal.monthly)):null,progress:Number(goal.target)>0?Math.min(100,Number(goal.reserved||0)/Number(goal.target)*100):0};}
+export function validateFunding(goals,totalPool){const sum=goals.filter(g=>g.status!=='archived').reduce((s,g)=>s+Number(g.reserved||0),0);return {sum,valid:totalPool==null||sum<=Number(totalPool),over:totalPool==null?0:Math.max(0,sum-Number(totalPool))};}
+export function perspectives(p,price,scenario='actual'){
+ let b=p.budget,now=price;if(scenario==='price-up'&&now!=null)now=Math.round(now*1.1);if(scenario==='budget-down'&&b!=null)b=Math.round(b*.75);
+ const fit=budgetFit(b,now),unused=p.id==='stand-mini';
+ return [
+ {key:'use',name:'正在使用的我',en:'PERFORMANCE',color:'blue',icon:'wave',status:scenario==='urgent'?'用途变得迫切':unused?'新用途未明确':'用途仍需确认',headline:scenario==='urgent'?'如果明天就要用，我会先确认可靠性。':unused?'便宜的第三个支架，会有新的位置吗？':'它能解决我现在的问题吗？',quote:scenario==='unused'?'如果三个月后很少使用，我希望今天先把原因想清楚。':`我现在的情况是：${p.existing}`,source:'你的用途与现有物品 · 本次确认',question:'新商品是否真的解决现有问题？',target:'overview',action:'核对我的使用需求'},
+ {key:'price',name:'精打细算的我',en:'VALUE FOR MONEY',color:'green',icon:'chart',status:!fit.known?'财务条件未确认':fit.over?'超出本次计划':'总价仍需对齐',headline:!fit.known?'先补齐价格和计划，才知道是否合适。':fit.over?`比你本次计划多 HK$${fit.over}。`:'计划允许，也要比较完整成本。',quote:!fit.known?'现在还不能判断你是否负担得起。':fit.over?'我想先看看这笔钱会挤占什么。':`按这组条件，计划内还余 HK$${fit.remainder}；这不是必须买的理由。`,source:'用户计划与当前报价 · 非银行余额',question:'型号、运费和保修是否一致？',target:'price',action:'比较平台总价'},
+ {key:'emotion',name:'感受当下的我',en:'EMOTIONAL VALUE',color:'amber',icon:'sun',status:scenario==='no-sale'?'去掉折扣再想想':p.emotion?'喜欢有其价值':'体验待确认',headline:'我期待的，是怎样的日常体验？',quote:p.emotion?`我期待的是：${p.emotion}`:'我还没有写下期待的体验。',source:'你的期待 · 用户可修改',question:scenario==='no-sale'?'没有优惠标签，我还会喜欢它吗？':'这份期待来自体验，还是促销刺激？',target:'plan',action:'写下最期待的体验'},
+ {key:'social',name:'在意形象的我',en:'SOCIAL VALUE',color:'purple',icon:'nodes',status:p.social?'依据本次回答':'相关影响待确认',headline:'别人的推荐，可以参考也可以放下。',quote:p.social?`我注意到的影响是：${p.social}`:'我还没有确认，推荐或身份表达对这次选择有何影响。',source:'你的回答 · 不是人格推断',question:'去掉推荐标签，你还会选它吗？',target:'plan',action:'再看看自己的理由'}
+ ];
+}
+export function decisionSnapshot(state,p,choice,reason,now=new Date().toISOString()){
+ const price=priceFor(state,p),prev=state.decisions.find(d=>d.productId===p.id);
+ return {id:'d-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6),productId:p.id,previousVersionId:prev?.id||null,choice,reason,createdAt:now,purchased:false,snapshot:JSON.parse(JSON.stringify({product:p,price,budget:p.budget,fit:budgetFit(p.budget,price),offer:state.selectedOffer,perspectives:perspectives(p,price),isExample:true,observedAt:state.priceDropped?'2026-10-15':'2026-10-14'}))};
+}
+export function applyDecision(state,p,choice,reason,condition={}){const d=decisionSnapshot(state,p,choice,reason);state.decisions.unshift(d);if(choice==='WAIT'){state.watch=state.watch.filter(w=>w.productId!==p.id);state.watch.push({productId:p.id,target:condition.target??null,note:condition.note||'等待新证据',enabled:true});}else state.watch=state.watch.filter(w=>w.productId!==p.id);return d;}
+export function triggerDrop(state,decisionId){const d=state.decisions.find(x=>x.id===decisionId);if(!d||!d.purchased||d.productId!=='earbud-aster'||d.snapshot.product.variantChanged||d.snapshot.offer!=='a')return null;state.priceDropped=true;let e=state.changes.find(c=>c.decisionId===decisionId&&c.kind==='price');if(e)return e;e={id:'change-'+Date.now().toString(36),decisionId,kind:'price',oldPrice:d.snapshot.price,newPrice:429,date:'2026-10-15',comparable:true};state.changes.unshift(e);return e;}

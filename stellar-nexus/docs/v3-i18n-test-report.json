@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-05T00:48:39.996Z",
+  "summary": "8 passed",
+  "checks": [
+    {
+      "check": "Chinese interface retains original labels",
+      "result": "PASS"
+    },
+    {
+      "check": "All seven navigation labels translate",
+      "result": "PASS"
+    },
+    {
+      "check": "English demo activity is authored",
+      "result": "PASS"
+    },
+    {
+      "check": "Canonical Chinese enums remain untranslated in data",
+      "result": "PASS"
+    },
+    {
+      "check": "English search finds canonical topic",
+      "result": "PASS"
+    },
+    {
+      "check": "Chinese search remains supported",
+      "result": "PASS"
+    },
+    {
+      "check": "Original free-form notes are preserved",
+      "result": "PASS"
+    },
+    {
+      "check": "Unknown user text does not turn into hybrid translated prose",
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "label": "Synthetic demonstration data, not actual participants or demand research",
+  "new_topics": 12,
+  "new_scenarios": 10,
+  "new_members": 30,
+  "new_mentors": 4,
+  "ideas": [
+    {
+      "topic": "cyanotype",
+      "title": "一張葉子的藍：藍曬明信片",
+      "title_en": "A leaf in blue: cyanotype postcards",
+      "goal": "每人帶一片落葉；小組比較遮片、曝光與圖案，帶走一張紙本作品。",
+      "goal_en": "Bring a fallen leaf, compare masks and exposure, and leave with a postcard.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "print",
+      "title": "把街角紋理，拓進一本小冊",
+      "title_en": "Print a neighbourhood texture booklet",
+      "goal": "兩人一組找紋理、做紙上拓印，再交換各自讀到的街道故事。",
+      "goal_en": "Work in pairs to collect textures, make rubbings and exchange street stories.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "garden",
+      "title": "陽台小菜園：一起配一盆土",
+      "title_en": "A balcony garden: mix your first pot",
+      "goal": "對照採光與澆水記錄，四人共同配土，約定一週後交流觀察。",
+      "goal_en": "Compare light and watering notes, mix soil in a group of four and review after a week.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "language",
+      "title": "把一個生活故事，說成三分鐘英語",
+      "title_en": "Tell a daily story in three minutes",
+      "goal": "用買菜、問路與介紹興趣的情境練習，輪流當說話者與回饋者。",
+      "goal_en": "Practise shopping, directions and introductions; alternate speaking and feedback.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "story",
+      "title": "一條街的記憶：學會問一個好問題",
+      "title_en": "Street memories: ask a better question",
+      "goal": "先練習開放式提問，再用自願分享的故事製作有授權的文字摘錄。",
+      "goal_en": "Practise open questions and create consented excerpts from volunteered stories.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "design",
+      "title": "把活動資訊，整理成一張讀得懂的海報",
+      "title_en": "Make an event poster people can understand",
+      "goal": "把時間、地點、準備清單與報名方式重新編排，交換可讀性回饋。",
+      "goal_en": "Arrange time, location, preparation and registration details; exchange readability feedback.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "sewing",
+      "title": "一起修好一件捨不得丟的衣服",
+      "title_en": "Repair a piece of clothing you love",
+      "goal": "從鈕扣與簡單破口開始，輪流示範並記下適合不同布料的方法。",
+      "goal_en": "Start with buttons and small tears; share methods for different fabrics.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "tea",
+      "title": "同一款茶，為什麼喝起來不同？",
+      "title_en": "One tea, different cups: compare your method",
+      "goal": "小組分工記錄時間、水量與感官描述，不給口味好壞排名。",
+      "goal_en": "Record time, water and tasting notes together, without ranking personal tastes.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "audio",
+      "title": "聽見日常：製作一張聲音明信片",
+      "title_en": "Listen to everyday life: a sound postcard",
+      "goal": "採集三段不含可辨識談話的環境聲，互相命名、整理成一分鐘作品。",
+      "goal_en": "Collect three ambient sounds without identifiable speech and edit a one-minute piece.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    },
+    {
+      "topic": "map",
+      "title": "畫一張能讓新朋友用上的社區地圖",
+      "title_en": "Map a neighbourhood for a newcomer",
+      "goal": "整理飲水、休息、交通與無障礙資源，注明來源和待核對的路線。",
+      "goal_en": "Map water, rest, transport and accessibility resources with sources and open questions.",
+      "format": "A small group creates a concrete result, compares observations, and keeps source-linked personal notes."
+    }
+  ]
+}
