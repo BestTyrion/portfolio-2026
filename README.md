@@ -1,1 +1,1 @@
-![Howson — Portfolio 2026](five-ways-of-seeing/assets/howson-cover.jpg)
+![Howson — Portfolio 2026](0%20Five%20Ways%20of%20Seeing/assets/howson-cover.jpg)
